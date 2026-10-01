@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal QR Code</title>
+
+    <!-- QR Code Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            width: 350px;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 7px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            margin-top: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #qrcode {
+            margin: 25px auto;
+            width: 200px;
+        }
+
+        #message {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Personal QR Code</h1>
+
+        <input type="text" id="name" placeholder="Enter your name">
+        <input type="text" id="phone" placeholder="Enter phone number">
+        <input type="email" id="email" placeholder="Enter email">
+        <input type="text" id="address" placeholder="Enter address">
+
+        <br>
+
+        <button onclick="generateQR()">Generate QR Code</button>
+
+        <p id="message"></p>
+
+        <div id="qrcode"></div>
+
+    </div>
+
+    <script>
+
+        function generateQR() {
+
+            // Get information entered by the user
+            let name = document.getElementById("name").value;
+            let phone = document.getElementById("phone").value;
+            let email = document.getElementById("email").value;
+            let address = document.getElementById("address").value;
+
+            // Check that fields are not empty
+            if (name === "" || phone === "" || email === "" || address === "") {
+                alert("Please fill in all the fields.");
+                return;
+            }
+
+            // Personal information to store in the QR code
+            let personalDetails =
+                "PERSONAL DETAILS\n\n" +
+                "Name: " + name + "\n" +
+                "Phone: " + phone + "\n" +
+                "Email: " + email + "\n" +
+                "Address: " + address;
+
+            // Clear previous QR code
+            document.getElementById("qrcode").innerHTML = "";
+
+            // Generate QR code
+            new QRCode(document.getElementById("qrcode"), {
+                text: personalDetails,
+                width: 200,
+                height: 200
+            });
+
+            document.getElementById("message").innerHTML =
+                "QR Code generated successfully!";
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>QR Code Poster</title>
+
+    <!-- QR Code Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <style>
+
+        /* =========================
+           GENERAL PAGE
+        ========================= */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #eeeeee;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+
+        /* =========================
+           POSTER
+        ========================= */
+
+        .poster {
+            width: 600px;
+            min-height: 800px;
+
+            background: white;
+
+            border-radius: 15px;
+
+            padding: 45px 40px;
+
+            text-align: center;
+
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+
+        /* Decorative top section */
+
+        .top-design {
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 12px;
+
+            background: #8b1e2d;
+        }
+
+
+        /* =========================
+           LOGO
+        ========================= */
+
+        .logo {
+            width: 100px;
+            height: 100px;
+
+            margin: 10px auto 20px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            border-radius: 50%;
+
+            background: #f4f4f4;
+
+            border: 2px solid #8b1e2d;
+
+            color: #8b1e2d;
+
+            font-weight: bold;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           HEADING
+        ========================= */
+
+        h1 {
+            color: #8b1e2d;
+
+            font-size: 30px;
+
+            margin-bottom: 12px;
+
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            color: #555;
+
+            font-size: 17px;
+
+            line-height: 1.5;
+
+            margin-bottom: 30px;
+        }
+
+
+        /* =========================
+           QR AREA
+        ========================= */
+
+        .qr-container {
+            width: 320px;
+            height: 320px;
+
+            margin: 0 auto 30px;
+
+            padding: 25px;
+
+            background: white;
+
+            border: 3px solid #8b1e2d;
+
+            border-radius: 15px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        #qrcode {
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+        }
+
+
+        /* =========================
+           INSTRUCTIONS
+        ========================= */
+
+        .scan-title {
+            font-size: 22px;
+
+            font-weight: bold;
+
+            color: #222;
+
+            margin-bottom: 10px;
+        }
+
+        .description {
+            color: #555;
+
+            font-size: 16px;
+
+            line-height: 1.6;
+
+            max-width: 450px;
+
+            margin: auto;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .footer {
+            margin-top: 35px;
+
+            padding-top: 20px;
+
+            border-top: 1px solid #ddd;
+
+            color: #666;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+        }
+
+        .footer strong {
+            color: #8b1e2d;
+        }
+
+
+        /* =========================
+           BUTTON
+        ========================= */
+
+        .download-btn {
+            margin-top: 20px;
+
+            padding: 12px 22px;
+
+            border: none;
+
+            border-radius: 7px;
+
+            background: #8b1e2d;
+
+            color: white;
+
+            font-size: 15px;
+
+            cursor: pointer;
+        }
+
+        .download-btn:hover {
+            background: #681520;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 650px) {
+
+            .poster {
+                width: 100%;
+
+                padding: 35px 20px;
+            }
+
+            h1 {
+                font-size: 25px;
+            }
+
+            .qr-container {
+                width: 280px;
+                height: 280px;
+
+                padding: 20px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         POSTER
+    ========================= -->
+
+    <div class="poster">
+
+        <div class="top-design"></div>
+
+
+        <!-- LOGO -->
+
+        <div class="logo">
+            YOUR LOGO
+        </div>
+
+
+        <!-- HEADING -->
+
+        <h1>
+            HELP US SERVE YOU BETTER!
+        </h1>
+
+
+        <p class="subtitle">
+            Your feedback is important to us.
+        </p>
+
+
+        <!-- QR CODE -->
+
+        <div class="qr-container">
+
+            <div id="qrcode"></div>
+
+        </div>
+
+
+        <!-- INSTRUCTIONS -->
+
+        <h2 class="scan-title">
+            Scan the QR Code
+        </h2>
+
+
+        <p class="description">
+            Use your phone camera to scan the QR code
+            above and access our online service.
+        </p>
+
+
+        <!-- FOOTER -->
+
+        <div class="footer">
+
+            <p>
+                Thank you for your support.
+            </p>
+
+            <p>
+                <strong>We value your feedback.</strong>
+            </p>
+
+        </div>
+
+
+        <!-- DOWNLOAD -->
+
+        <button
+            class="download-btn"
+            onclick="window.print()">
+
+            Print / Save Poster
+
+        </button>
+
+    </div>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        /*
+         * CHANGE THIS URL
+         * to the website/page you want
+         * the QR code to open.
+         */
+
+        const qrLink =
+            "https://docs.google.com/forms/d/e/1FAIpQLSf57xHvter3BflVfOsR4V5DQBI5c-_vgTYfJc53f-0kriT-YQ/viewform?usp=sharing&ouid=117463157606513727828";
+
+
+        /*
+         * Generate QR code
+         */
+
+        new QRCode(
+            document.getElementById("qrcode"),
+            {
+                text: qrLink,
+
+                width: 260,
+
+                height: 260,
+
+                colorDark: "#000000",
+
+                colorLight: "#ffffff",
+
+                correctLevel:
+                    QRCode.CorrectLevel.H
+            }
+        );
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,454 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GIS Systems Survey</title>
+
+    <!-- QR CODE LIBRARY -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* QR CODE SECTION */
+        .qr-container {
+            max-width: 650px;
+            margin: 0 auto 20px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+
+        #qrcode {
+            margin: 20px auto;
+            width: 200px;
+        }
+
+        /* FORM */
+        .form-container {
+            max-width: 650px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        h2 {
+            color: #4285F4;
+        }
+
+        .description {
+            text-align: center;
+            color: #666;
+        }
+
+        .question {
+            margin-top: 25px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .option {
+            margin: 8px 0;
+            font-weight: normal;
+        }
+
+        button {
+            margin-top: 25px;
+            width: 100%;
+            padding: 12px;
+            background-color: #4285F4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #3367D6;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e8f5e9;
+            border-radius: 5px;
+            display: none;
+            text-align: center;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- QR CODE -->
+    <div class="qr-container">
+
+        <h2>GIS Systems Survey</h2>
+
+        <p>Scan the QR code below to open this survey on your phone.</p>
+
+        <div id="qrcode"></div>
+
+        <p>
+            <strong>Scan to access the GIS survey</strong>
+        </p>
+
+    </div>
+
+
+    <!-- SURVEY FORM -->
+    <div class="form-container">
+
+        <h1>GIS Systems Survey</h1>
+
+        <p class="description">
+            Please provide information about GIS systems and technical challenges.
+        </p>
+
+        <form id="surveyForm">
+
+            <!-- QUESTION 1 -->
+            <div class="question">
+
+                <label for="name">
+                    1. Name
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Enter your name"
+                    required
+                >
+
+            </div>
+
+
+            <!-- QUESTION 2 -->
+            <div class="question">
+
+                <label for="department">
+                    2. Department
+                </label>
+
+                <select id="department" required>
+
+                    <option value="">
+                        -- Select Department --
+                    </option>
+
+                    <option value="Lands">
+                        Lands
+                    </option>
+
+                    <option value="Planning">
+                        Planning
+                    </option>
+
+                    <option value="Emergency">
+                        Emergency
+                    </option>
+
+                    <option value="ICT">
+                        ICT
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- QUESTION 3 -->
+            <div class="question">
+
+                <label>
+                    3. Do you use GIS in your daily work?
+                </label>
+
+                <div class="option">
+                    <input
+                        type="radio"
+                        name="gis"
+                        value="Yes"
+                        required
+                    >
+                    Yes
+                </div>
+
+                <div class="option">
+                    <input
+                        type="radio"
+                        name="gis"
+                        value="No"
+                    >
+                    No
+                </div>
+
+            </div>
+
+
+            <!-- QUESTION 4 -->
+            <div class="question">
+
+                <label>
+                    4. Are the GIS computers fast enough for daily work?
+                </label>
+
+                <div class="option">
+                    <input
+                        type="radio"
+                        name="computer"
+                        value="Yes"
+                        required
+                    >
+                    Yes
+                </div>
+
+                <div class="option">
+                    <input
+                        type="radio"
+                        name="computer"
+                        value="No"
+                    >
+                    No
+                </div>
+
+            </div>
+
+
+            <!-- QUESTION 5 -->
+            <div class="question">
+
+                <label>
+                    5. Do you experience network interruptions?
+                </label>
+
+                <div class="option">
+                    <input
+                        type="radio"
+                        name="network"
+                        value="Frequently"
+                        required
+                    >
+                    Frequently
+                </div>
+
+                <div class="option">
+                    <input
+                        type="radio"
+                        name="network"
+                        value="Sometimes"
+                    >
+                    Sometimes
+                </div>
+
+                <div class="option">
+                    <input
+                        type="radio"
+                        name="network"
+                        value="Never"
+                    >
+                    Never
+                </div>
+
+            </div>
+
+
+            <!-- QUESTION 6 -->
+            <div class="question">
+
+                <label for="backup">
+                    6. How frequently is GIS data backed up?
+                </label>
+
+                <select id="backup" required>
+
+                    <option value="">
+                        -- Select --
+                    </option>
+
+                    <option value="Daily">
+                        Daily
+                    </option>
+
+                    <option value="Weekly">
+                        Weekly
+                    </option>
+
+                    <option value="Monthly">
+                        Monthly
+                    </option>
+
+                    <option value="Rarely">
+                        Rarely
+                    </option>
+
+                    <option value="Never">
+                        Never
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- QUESTION 7 -->
+            <div class="question">
+
+                <label for="challenges">
+                    7. What technical challenges do you experience?
+                </label>
+
+                <textarea
+                    id="challenges"
+                    placeholder="Enter your answer here..."
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <!-- QUESTION 8 -->
+            <div class="question">
+
+                <label for="recommendations">
+                    8. What improvements would you recommend?
+                </label>
+
+                <textarea
+                    id="recommendations"
+                    placeholder="Enter your recommendations..."
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <button type="submit">
+                Submit Survey
+            </button>
+
+        </form>
+
+
+        <!-- SUCCESS MESSAGE -->
+        <div id="result">
+
+            <strong>
+                Thank you!
+            </strong>
+
+            <p>
+                Your survey has been submitted successfully.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        /*
+        ==================================================
+        QR CODE
+        ==================================================
+        */
+
+        /*
+        IMPORTANT:
+
+        Replace the URL below with the ONLINE address
+        where you will host this survey.
+        */
+
+        const SURVEY_URL =
+            "https://yourwebsite.com/gis_survey.html";
+
+
+        // Generate QR Code
+
+        new QRCode(
+            document.getElementById("qrcode"),
+            {
+                text: SURVEY_URL,
+                width: 200,
+                height: 200
+            }
+        );
+
+
+        /*
+        ==================================================
+        SURVEY SUBMISSION
+        ==================================================
+        */
+
+        document
+            .getElementById("surveyForm")
+            .addEventListener("submit", function(event) {
+
+                // Stop page from refreshing
+
+                event.preventDefault();
+
+
+                // Display success message
+
+                document
+                    .getElementById("result")
+                    .style.display = "block";
+
+
+                // Clear the form
+
+                document
+                    .getElementById("surveyForm")
+                    .reset();
+
+            });
+
+    </script>
+
+</body>
+</html>
+```
